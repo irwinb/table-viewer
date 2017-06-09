@@ -1,0 +1,357 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"console"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/components/Home.js",
+			"settings":
+			{
+				"buffer_size": 793,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/components/table/TTable.js",
+			"settings":
+			{
+				"buffer_size": 551,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/table/TTextRow.js",
+			"settings":
+			{
+				"buffer_size": 640,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 185.0,
+		"last_filter": "intall ",
+		"selected_items":
+		[
+			[
+				"intall ",
+				"Package Control: Install Package"
+			],
+			[
+				"activate th",
+				"Material Theme: Activate theme"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 398.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/dev/table-viewer",
+		"/C/dev/table-viewer/app",
+		"/C/dev/table-viewer/app/components",
+		"/C/dev/table-viewer/app/components/table",
+		"/C/dev/table-viewer/app/containers"
+	],
+	"file_history":
+	[
+		"/C/dev/table-viewer/app/components/table/TTextColumn.js",
+		"/C/dev/table-viewer/app/index.js",
+		"/C/dev/table-viewer/app/components/table/TTextRow.js",
+		"/C/dev/table-viewer/app/components/Counter.js",
+		"/C/dev/table-viewer/app/components/rows/Row.js",
+		"/C/dev/table-viewer/app/components/rows/TextColumn.js",
+		"/C/dev/table-viewer/app/components/rows/TextRow.js",
+		"/C/dev/table-viewer/app/components/TableRowRoot.js",
+		"/C/dev/table-viewer/app/components/rows/TableRowTextRenderer.js",
+		"/C/dev/table-viewer/app/components/rows/TableRowRoot.js",
+		"/C/dev/table-viewer/app/components/Table.js",
+		"/C/dev/table-viewer/app/containers/TableRowRoot.js",
+		"/C/dev/table-viewer/app/containers/CounterPage.js",
+		"/C/dev/table-viewer/app/containers/Root.js",
+		"/C/dev/table-viewer/app/components/RowRoot.css",
+		"/C/dev/table-viewer/s.sublime-project",
+		"/C/dev/table-viewer/subilme.sublime-workspace",
+		"/C/dev/table-viewer/app/components/Home.js",
+		"/C/dev/table-viewer/package.json",
+		"/C/dev/table-viewer/index.html",
+		"/C/Users/Irwin/.hyper.js",
+		"/C/dev/ggg/slack-client/test.js",
+		"/C/dev/ggg/slack-twitch-bot/test.js",
+		"/C/dev/ggg/spotify-slack-bot/azuretables.js",
+		"/C/dev/ggg/slack-twitch-bot/README.md",
+		"/C/dev/ggg/members/index.js",
+		"/C/dev/ggg/spotify-slack-bot/environment.js",
+		"/C/dev/ggg/members/members.js",
+		"/C/dev/ggg/spotify-slack-bot/test.js",
+		"/C/dev/ggg/utils/test.js",
+		"/C/dev/ggg/spotify-slack-bot/config.js",
+		"/C/dev/ggg/members/.gitignore",
+		"/C/dev/ggg/members/test.js",
+		"/C/dev/spotify-slack-bot/jobs/twilightJob.js"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"this.props.rowType",
+			"Row",
+			"TextColumn",
+			"TextRow",
+			"TableRow",
+			"({})",
+			"currentlyStreaming",
+			"id",
+			"\\\\SublimeText\\\\",
+			"var",
+			"Bluebird",
+			"test",
+			"updateMember"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/components/Home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 793,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								267,
+								267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/components/table/TTable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 551,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/components/table/TTextRow.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								206
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 70.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "s.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packag",
+				"package.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 399.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
