@@ -18,7 +18,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className={styles.container} data-tid="container">
-          <TTable data={data} rowType={TTextRow}/>
+          <TTable entries={data} rowType={TTextRow}/>
         </div>
       </div>
     );

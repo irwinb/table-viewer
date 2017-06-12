@@ -5,17 +5,17 @@ import React, { Component } from 'react';
 
 class TTextRow extends Component {
   props: {
-    data: any
+    entry: any
   }
 
   render() {
     return (
       <div>
         {Object
-          .keys(this.props.data)
+          .keys(this.props.entry)
           .map(key =>
             <TableRowColumn> 
-              {this.props.data[key]}
+              {this.props.entry[key]}
             </TableRowColumn>
           )}
       </div>);
