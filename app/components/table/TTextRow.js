@@ -3,35 +3,18 @@ import { TableRowColumn } from 'material-ui/Table';
 
 import React, { Component } from 'react';
 
-class TTextRow extends Component {
-  props: {
-    entry: any
-  }
-
-  render() {
-    return (
-      <div>
-        {Object
-          .keys(this.props.entry)
-          .map(key =>
-            <TableRowColumn> 
-              {this.props.entry[key]}
-            </TableRowColumn>
-          )}
-      </div>);
-  }
-}
-/*
-const TTextRow = ({data}) => (
+const TTextRow = ({
+  entry
+}) => (
   <div>
     {Object
-      .keys(data)
-      .map(key => {
+      .keys(this.props.entry)
+      .map(key =>
         <TableRowColumn> 
-          <TextColumn data={key} />
+          {this.props.entry[key]}
         </TableRowColumn>
-      })}
+      )}
   </div>  
 )
-*/
+
 export default TTextRow;
