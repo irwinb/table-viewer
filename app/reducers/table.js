@@ -9,12 +9,22 @@ type actionType = {
   type: string
 };
 
+type pageActionType = {
+  type:     string,
+  nextPage: number
+};
+
+type entriesActionType = {
+  type:     string,
+  page:     number
+};
+
 /**
  * Reducer that takes an action that contains:
  * type      the action type.
  * nextPage  the page to change to, if type is CHANGE_PAGE
  */
-export function page(state: number = 1, action: actionType) {
+export function page(state: number = 1, action: pageActionType) {
   switch (action.type) {
     case CHANGE_PAGE:
       return action.nextPage;
@@ -28,7 +38,7 @@ export function page(state: number = 1, action: actionType) {
   }
 }
 
-export function entries(state: array = [], action: actionType) {
+export function entries(state: array = [], action: entriesActionType) {
   switch (action.type) {
     case CHANGE_PAGE:
       

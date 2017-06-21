@@ -25,13 +25,5 @@ export default class Home extends Component {
   }
 }
 
-{
-  currentPage: 1, // Current page
-  entriesPerPage: 10,
-  totalEntries: 1000,
-  entries: [
-  ]
-}
-
 // currentPage reducer
 // entries reducer
