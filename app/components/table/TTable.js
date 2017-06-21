@@ -20,9 +20,7 @@ class TTable extends Component {
       <Table>
         <TableBody>
           {this.props.entries.map(rowData =>
-            <TableRow>
-              <Row entry={rowData} />
-            </TableRow>
+            <Row entry={rowData} key={rowData.id} />
           )}
         </TableBody>
       </Table>

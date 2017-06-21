@@ -6,11 +6,11 @@ import TTable from './table/TTable';
 import TTextRow from './table/TTextRow';
 
 const data = [
-  {name: 'Smd Mmq', size: 10, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {name: 'Herp A. Derp', size: 550, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {name: 'Qier S. Riwryu', size: 60, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {name: 'Niurnamx Ieurn', size: 90, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {name: 'Iwohfa H. Twernas', size: 100, hash: '1JFIJJJ%%J42j34jJ$j'}
+  {id: 1, name: 'Smd Mmq', size: 10, hash: '1JFIJJJ%%J42j34jJ$j'},
+  {id: 2, name: 'Herp A. Derp', size: 550, hash: '1JFIJJJ%%J42j34jJ$j'},
+  {id: 3, name: 'Qier S. Riwryu', size: 60, hash: '1JFIJJJ%%J42j34jJ$j'},
+  {id: 4, name: 'Niurnamx Ieurn', size: 90, hash: '1JFIJJJ%%J42j34jJ$j'},
+  {id: 5, name: 'Iwohfa H. Twernas', size: 100, hash: '1JFIJJJ%%J42j34jJ$j'}
 ];
 
 export default class Home extends Component {
@@ -24,14 +24,3 @@ export default class Home extends Component {
     );
   }
 }
-
-{
-  currentPage: 1, // Current page
-  entriesPerPage: 10,
-  totalEntries: 1000,
-  entries: [
-  ]
-}
-
-// currentPage reducer
-// entries reducer
