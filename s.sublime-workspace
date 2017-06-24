@@ -67,13 +67,11 @@
 			}
 		},
 		{
-			"contents": "// @flow\nimport { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/counter';\n\nexport type counterStateType = {\n  counter: number\n};\n\ntype actionType = {\n  type: string\n};\n\nexport default function counter(state: number = 0, action: actionType) {\n  switch (action.type) {\n    case INCREMENT_COUNTER:\n      return state + 1;\n    case DECREMENT_COUNTER:\n      return state - 1;\n    default:\n      return state;\n  }\n}\n\n{\n  currentPage: 1, // Current page\n  entriesPerPage: 10,\n  totalEntries: 1000,\n  entries: [\n  ]\n}",
 			"file": "app/reducers/counter.js",
-			"file_size": 419,
-			"file_write_time": 131420574688649014,
 			"settings":
 			{
 				"buffer_size": 519,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -272,8 +270,8 @@
 						"selection":
 						[
 							[
-								902,
-								902
+								1376,
+								1376
 							]
 						],
 						"settings":
@@ -282,10 +280,10 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 312.0,
+						"translation.y": 1086.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -422,8 +420,8 @@
 						"selection":
 						[
 							[
-								478,
-								478
+								159,
+								159
 							]
 						],
 						"settings":
@@ -436,7 +434,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
