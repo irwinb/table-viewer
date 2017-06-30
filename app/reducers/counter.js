@@ -19,11 +19,3 @@ export default function counter(state: number = 0, action: actionType) {
       return state;
   }
 }
-
-{
-  currentPage: 1, // Current page
-  entriesPerPage: 10,
-  totalEntries: 1000,
-  entries: [
-  ]
-}
