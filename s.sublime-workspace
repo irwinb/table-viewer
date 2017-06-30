@@ -20,52 +20,43 @@
 	"buffers":
 	[
 		{
-			"file": "app/components/Home.js",
+			"file": "app/containers/TablePage.js",
 			"settings":
 			{
-				"buffer_size": 874,
+				"buffer_size": 478,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/reducers/index.js",
+			"settings":
+			{
+				"buffer_size": 275,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/components/Table.js",
+			"settings":
+			{
+				"buffer_size": 838,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/reducers/table.js",
 			"settings":
 			{
-				"buffer_size": 1453,
+				"buffer_size": 1513,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/actions/table/tableStorageClient.js",
-			"settings":
-			{
-				"buffer_size": 1154,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 781,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/components/table/TTable.js",
-			"settings":
-			{
-				"buffer_size": 526,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/components/table/TTextRow.js",
+			"file": "app/components/Home.js",
 			"settings":
 			{
 				"buffer_size": 359,
@@ -81,15 +72,6 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "// @flow"
-			}
-		},
-		{
-			"file": "app/reducers/counter.js",
-			"settings":
-			{
-				"buffer_size": 419,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -154,22 +136,32 @@
 		"/C/dev/table-viewer/app",
 		"/C/dev/table-viewer/app/actions",
 		"/C/dev/table-viewer/app/components",
-		"/C/dev/table-viewer/app/containers"
+		"/C/dev/table-viewer/app/containers",
+		"/C/dev/table-viewer/app/reducers",
+		"/C/dev/table-viewer/app/reducers/table"
 	],
 	"file_history":
 	[
+		"/C/dev/table-viewer/app/reducers/table/tableStorageClient.js",
+		"/C/dev/table-viewer/app/actions/counter.js",
+		"/C/dev/table-viewer/app/actions/table/tableStorageClient.js",
+		"/C/dev/table-viewer/app/reducers/table.js",
+		"/C/dev/table-viewer/app/components/Table.js",
+		"/C/dev/table-viewer/README.md",
+		"/C/dev/table-viewer/app/components/table/TTextRow.js",
+		"/C/dev/table-viewer/app/components/table/TTable.js",
+		"/C/dev/table-viewer/app/routes.js",
+		"/C/dev/table-viewer/app/reducers/counter.js",
 		"/C/dev/table-viewer/package.json",
 		"/C/dev/table-viewer/app/components/Counter.js",
 		"/C/dev/table-viewer/app/components/table/TTextColumn.js",
 		"/C/dev/table-viewer/app/index.js",
-		"/C/dev/table-viewer/app/components/table/TTextRow.js",
 		"/C/dev/table-viewer/app/components/rows/Row.js",
 		"/C/dev/table-viewer/app/components/rows/TextColumn.js",
 		"/C/dev/table-viewer/app/components/rows/TextRow.js",
 		"/C/dev/table-viewer/app/components/TableRowRoot.js",
 		"/C/dev/table-viewer/app/components/rows/TableRowTextRenderer.js",
 		"/C/dev/table-viewer/app/components/rows/TableRowRoot.js",
-		"/C/dev/table-viewer/app/components/Table.js",
 		"/C/dev/table-viewer/app/containers/TableRowRoot.js",
 		"/C/dev/table-viewer/app/containers/CounterPage.js",
 		"/C/dev/table-viewer/app/containers/Root.js",
@@ -210,6 +202,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"...",
+			"object.assign",
+			"increment()",
+			"reducers/",
+			"connect",
+			"mapStateToProps",
 			"\nincrementIfOdd",
 			"incrementIfOdd",
 			"data",
@@ -243,59 +241,28 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/components/Home.js",
+					"file": "app/containers/TablePage.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 874,
+						"buffer_size": 478,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								400,
-								400
+								305,
+								305
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/reducers/table.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1453,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1450,
-								1450
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
@@ -306,20 +273,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/actions/table/tableStorageClient.js",
+					"buffer": 1,
+					"file": "app/reducers/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1154,
+						"buffer_size": 275,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1154,
-								1154
+								245,
+								245
 							]
 						],
 						"settings":
@@ -330,58 +297,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "README.md",
+					"buffer": 2,
+					"file": "app/components/Table.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 781,
+						"buffer_size": 838,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								781,
-								781
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 3,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "app/components/table/TTable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 526,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								294,
-								294
+								642,
+								642
 							]
 						],
 						"settings":
@@ -398,8 +331,44 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/components/table/TTextRow.js",
+					"buffer": 3,
+					"file": "app/reducers/table.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1015,
+								1015
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 390.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "app/components/Home.js",
 					"semi_transient": false,
 					"settings":
 					{
@@ -410,23 +379,25 @@
 						"selection":
 						[
 							[
-								77,
-								77
+								300,
+								300
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "app/actions/table.js",
 					"semi_transient": false,
 					"settings":
@@ -438,8 +409,8 @@
 						"selection":
 						[
 							[
-								597,
-								597
+								433,
+								433
 							]
 						],
 						"settings":
@@ -451,43 +422,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/reducers/counter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 419,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 6,
 					"file": "app/actions/counter.js",
-					"semi_transient": false,
+					"semi_transient": true,
 					"settings":
 					{
 						"buffer_size": 803,
@@ -497,8 +438,8 @@
 						"selection":
 						[
 							[
-								462,
-								462
+								23,
+								39
 							]
 						],
 						"settings":
@@ -511,7 +452,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
