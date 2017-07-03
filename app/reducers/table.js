@@ -1,9 +1,25 @@
 // @flow
-import { CHANGE_PAGE, INCREMENT_PAGE, DECREMENT_PAGE } from '../actions/table';
-import createTableStorageClient from './table/tableStorageClient';
+import { 
+  UPDATE_PAGE,
+  REQUEST_ENTRIES,
+  RECEIVE_ENTRIES,
+  RECEIVE_ENTRIES_FAILURE
+} from '../actions/table'
+import { combineReducers } from 'redux'
+import Conf from 'conf'
+
+export type pageStateType = {
+  start: number,
+  count: number
+};
 
 export type tableStateType = {
-  table: object
+  entries: array,
+  page: pageStateType,
+  name: string,
+  entriesPerPage: number,
+  continuationToken: string,
+  isFetching: bool
 };
 
 type actionType = {
@@ -20,53 +36,45 @@ type entriesActionType = {
   page:     number
 };
 
-const tableStorageClient = createTableStorageClient();
+const config = new Conf();
+const entriesPerPage = config.get('table.entriesPerPage');
 
-/**
- * 
+function entries(state: entriesStateType = {
+  rows: [],
+  continuationToken: null,
+  isFetching: false
+}, action: entriesActionType)
 
- * Reducer that takes an action that contains:
- * type      the action type.
- * nextPage  the page to change to, if type is CHANGE_PAGE
- */
-function page(state: number = 1, action: pageActionType) {
-  switch (action.type) {
-    case CHANGE_PAGE:
-      return action.nextPage;
-    case INCREMENT_PAGE:
-      return state + 1;
-    case DECREMENT_PAGE:
-      return state <= 1 
-          ? state
-          : state - 1;
-    default:
-     return state;
-  }
-}
+export default table = combineReducers({
+  entries,
+  currentPage,
+  name,
+  entriesPerPage,
+  continuationToken,
+  fetching
+});
 
-function entries(state: array = [], action: entriesActionType) {
-  switch (action.type) {
-    case CHANGE_PAGE:
-    default:
-     return state;
-  }
-}
-
-export default function table(state: object = {
-  page: 1,
-  entries: []
+export default function table(state: tableStateType = {
+  entries: [],
+  currentPage: {
+    start: 0,
+    count: 0,
+    entriesPerPage: entriesPerPage
+  },
+  name: null,
+  continuationToken: null,
+  isFetching: false
 }, action: actionType) {
+  // Have we initialized a table? 
+  if (!state.name) {
+    return state;
+  }
+
   switch (action.type) {
-    case CHANGE_PAGE:
-    case INCREMENT_PAGE:
-    case DECREMENT_PAGE:
-      state = Object.assign({}, state, {
-        page: page(state.page, action.type)
-      });
-      state.entries = entries(state.entries, {
-        type: CHANGE_PAGE,
-        page: state.page
-      });
+    case UPDATE_PAGE:
+    case REQUEST_ENTRIES:
+    case RECEIVE_ENTRIES:
+    case RECEIVE_ENTRIES_FAILURE:
       return state;
     default:
       return state;
