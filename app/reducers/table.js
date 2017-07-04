@@ -1,9 +1,10 @@
 // @flow
-import { 
-  UPDATE_PAGE,
+import {
   REQUEST_ENTRIES,
   RECEIVE_ENTRIES,
-  RECEIVE_ENTRIES_FAILURE
+  RECEIVE_ENTRIES_FAILURE,
+  UPDATE_PAGE,
+  UPDATE_TABLE,
 } from '../actions/table'
 import { combineReducers } from 'redux'
 import Conf from 'conf'
@@ -28,7 +29,8 @@ type actionType = {
 
 type pageActionType = {
   type:     string,
-  nextPage: number
+  start: number,
+  count: number
 };
 
 type entriesActionType = {
@@ -36,47 +38,95 @@ type entriesActionType = {
   page:     number
 };
 
+type metadataType = {
+  name: string,
+  entriesPerPage: number
+};
+
+type metadataActionType = {
+  type: string,
+  name: string,
+  entriesPerPage: number
+};
+
+type statusType = {
+  isFetching: bool
+};
+
+type statusActionType = {
+  type: string,
+  isFetching: bool
+};
+
 const config = new Conf();
 const entriesPerPage = config.get('table.entriesPerPage');
 
 function entries(state: entriesStateType = {
   rows: [],
-  continuationToken: null,
+  continuationToken: null
+}, action: entriesActionType) {
+  switch (action.type) {
+    case RECEIVE_ENTRIES:
+      return Object.assign({}, state, {
+        rows: [...state.rows, action.rows],
+        action.continuationToken
+      });
+    default:
+      return state;
+  }
+}
+
+function currentPage(state: pageStateType = {
+  start: 0,
+  count: 0
+}, action: pageActionType) {
+  switch (action.type) {
+    case UPDATE_PAGE:
+      return Object.assign({}, state, {
+        action.start,
+        action.count
+      });
+    default:
+      return state;
+  }
+}
+
+function metadata(state: metadataType = {
+  name: null,
+  entriesPerPage
+}, action: metadataActionType) {
+  switch (action.type) {
+    case UPDATE_TABLE:
+      return Object.assign({}, state, {
+        name: action.name,
+        entriesPerPage: action.entriesPerPage
+      });
+    default:
+      return state;
+  }
+}
+
+function status(state: statusType = {
   isFetching: false
-}, action: entriesActionType)
+}, action: statusActionType) {
+  switch (action.type) {
+    case REQUEST_ENTRIES:
+      return Object.assign({}, state, {
+        isFetching: true
+      });
+    case RECEIVE_ENTRIES:
+    case RECEIVE_ENTRIES_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false
+      });
+    default:
+      return state;
+  }
+}
 
 export default table = combineReducers({
   entries,
   currentPage,
-  name,
-  entriesPerPage,
-  continuationToken,
-  fetching
+  metadata,
+  status
 });
-
-export default function table(state: tableStateType = {
-  entries: [],
-  currentPage: {
-    start: 0,
-    count: 0,
-    entriesPerPage: entriesPerPage
-  },
-  name: null,
-  continuationToken: null,
-  isFetching: false
-}, action: actionType) {
-  // Have we initialized a table? 
-  if (!state.name) {
-    return state;
-  }
-
-  switch (action.type) {
-    case UPDATE_PAGE:
-    case REQUEST_ENTRIES:
-    case RECEIVE_ENTRIES:
-    case RECEIVE_ENTRIES_FAILURE:
-      return state;
-    default:
-      return state;
-  }
-};

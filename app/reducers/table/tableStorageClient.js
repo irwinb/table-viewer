@@ -6,7 +6,7 @@ import {
 import Bluebird from 'bluebird';
 import Conf from 'conf';
 
-const connString = 'DefaultEndpointsProtocol=https;AccountName=gggspotify;AccountKey=sWOVzABIyZGU7hmJFa0AMTAlahB3aVvObrjZ5wKswrWwJ5IbeXKgEQv4eUy7SdAJS/fD7aa/JkHn2H20EUmdpw==;EndpointSuffix=core.windows.net';
+const connString = 'nope';
 const config = new Conf();
 
 function TableStorageClientFactory(connectionString: string, entity: string) {

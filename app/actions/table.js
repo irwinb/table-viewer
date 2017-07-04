@@ -8,6 +8,22 @@ type actionType = {
   type: string
 };
 
+export const CHANGE_TABLE = 'CHANGE_TABLE';
+export function updateTable(name) {
+  return {
+    type: CHANGE_TABLE,
+    name
+  }
+}
+
+export const UPDATE_TABLE = 'UPDATE_TABLE';
+export function updateTable(entriesPerPage) {
+  return {
+    type: UPDATE_TABLE,
+    entriesPerPage
+  }
+}
+
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 export function updatePage(start, count) {
   return {
@@ -41,39 +57,42 @@ export function receiveEntriesFailure(error) {
   }
 }
 
-function shouldFetchEntries(state, start, count) {
-  return !(start + count < state.entries.length);
+function needToFetchMoreEntries(entries, start, count) {
+  return !(start + count < entries.length);
 }
 
-function canFetchMoreEntries(state) {
-  return state.continuationToken && state.continuationToken.length > 0;
+function canFetchMoreEntries(continuationToken) {
+  return continuationToken && continuationToken.length > 0;
 }
 
 /**
  * @param {number} start position of the first element. zero-indexed.
  */
-export function changePage(start, count) {
+export function tryUpdatePage(start) {
   return (dispatch: () => mixed, getState: () => mixed) => {
     const state = getState();
+    const entriesPerPage = state.metadata.entriesPerPage;
 
     if (start < 0) {
       return Promise.resolve();
     }
 
-    if (!shouldFetchEntries(state, start, count)) {
-      dispatch(updatePage(start, count));
+    if (!needToFetchMoreEntries(state.entries, start, entriesPerPage)) {
+      dispatch(updatePage(start, entriesPerPage));
       return Promise.resolve();
     }
 
-    if (!canFetchMoreEntries(state)) {
+    if (!canFetchMoreEntries(state.continuationToken)) {
+      dispatch(updatePage(start, state.entries.length - start));
       return Promise.resolve();
     }
 
     return tableStorageClient
-      .getRows(count, state.continuationToken)
+      .getRows(entriesPerPage, state.continuationToken)
       .then(result => {
         console.log(JSON.stringify(result));
         dispatch(receiveEntries(data));
+        dispatch(updatePage(start, entriesPerPage));
       });
   }
 }
