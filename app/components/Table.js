@@ -3,29 +3,21 @@ import React, { Component } from 'react';
 import TTable from './table/TTable';
 import TTextRow from './table/TTextRow';
 import TPagination from './TPagination';
-
-const data = [
-  {id: 1, name: 'Smd Mmq', size: 10, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {id: 2, name: 'Herp A. Derp', size: 550, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {id: 3, name: 'Qier S. Riwryu', size: 60, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {id: 4, name: 'Niurnamx Ieurn', size: 90, hash: '1JFIJJJ%%J42j34jJ$j'},
-  {id: 5, name: 'Iwohfa H. Twernas', size: 100, hash: '1JFIJJJ%%J42j34jJ$j'}
-];
+import { Data } from '../reducers/table';
 
 export default class Table extends Component {
   props: {
-    entries: Array<any>,
+    data: Data,
     changePage: () => void
   };
 
   render() {
-    const { entries } = this.props;
-
+    const { data, changePage } = this.props;
     return (
       <div>
         <div data-tid="container">
-          <TPagination totalNumberOfEntries={100} start={0} entriesPerPage={10} changePage={(s, e) => {}}/>
-          <TTable entries={entries} rowType={TTextRow}/>
+          <TPagination totalNumberOfEntries={data.rows.length} start={0} entriesPerPage={10} changePage={changePage}/>
+          <TTable rows={data.rows} rowType={TTextRow}/>
         </div>
       </div>
     );

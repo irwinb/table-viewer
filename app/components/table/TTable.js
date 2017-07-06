@@ -9,7 +9,7 @@ import {
 
 class TTable extends Component {
   props: {
-    entries: Array,
+    rows: Array,
     rowType: any
   }
 
@@ -19,8 +19,8 @@ class TTable extends Component {
     return (
       <Table>
         <TableBody>
-          {this.props.entries.map(rowData =>
-            <Row entry={rowData} key={rowData.id} />
+          {this.props.rows.map(row =>
+            <Row row={row} key={row.id} />
           )}
         </TableBody>
       </Table>

@@ -18,10 +18,10 @@ export function changeTable(name) {
 }
 
 export const UPDATE_TABLE = 'UPDATE_TABLE';
-export function updateTable(entriesPerPage) {
+export function updateTable(rowsPerPage) {
   return {
     type: UPDATE_TABLE,
-    entriesPerPage
+    rowsPerPage
   }
 }
 
@@ -34,66 +34,66 @@ export function updatePage(start, count) {
   }
 }
 
-export const REQUEST_ENTRIES = 'REQUEST_ENTRIES';
-export function requestEntries() {
+export const REQUEST_DATA = 'REQUEST_DATA';
+export function requestData() {
   return {
-    type: REQUEST_ENTRIES,
+    type: REQUEST_DATA,
     table
   }
 }
 
-export const RECEIVE_ENTRIES = 'RECEIVE_ENTRIES';
-export function receiveEntries(data) {
+export const RECEIVE_DATA = 'RECEIVE_DATA';
+export function receiveData(data) {
   return {
-    type: RECEIVE_ENTRIES,
+    type: RECEIVE_DATA,
     data
   }
 }
 
-export const RECEIVE_ENTRIES_FAILURE = 'RECEIVE_ENTRIES_FAILURE';
-export function receiveEntriesFailure(error) {
+export const RECEIVE_DATA_FAILURE = 'RECEIVE_DATA_FAILURE';
+export function receiveDataFailure(error) {
   return {
-    type: RECEIVE_ENTRIES_FAILURE,
+    type: RECEIVE_DATA_FAILURE,
     error
   }
 }
 
-function needToFetchMoreEntries(entries, start, count) {
-  return !(start + count < entries.length);
+function needToFetchMoreRows(rows, start, count) {
+  return !(start + count < rows.length);
 }
 
-function canFetchMoreEntries(continuationToken) {
+function canFetchMoreRows(continuationToken) {
   return continuationToken && continuationToken.length > 0;
 }
 
 /**
  * @param {number} start position of the first element. zero-indexed.
  */
-export function tryUpdatePage(start) {
+export function changePage(start) {
   return (dispatch: () => mixed, getState: () => mixed) => {
-    const state = getState();
-    const entriesPerPage = state.metadata.entriesPerPage;
+    const table = getState().table;
+    const rowsPerPage = table.metadata.rowsPerPage;
 
     if (start < 0) {
       return Promise.resolve();
     }
 
-    if (!needToFetchMoreEntries(state.entries, start, entriesPerPage)) {
-      dispatch(updatePage(start, entriesPerPage));
+    if (!needToFetchMoreRows(table.data.rows, start, rowsPerPage)) {
+      dispatch(updatePage(start, rowsPerPage));
       return Promise.resolve();
     }
 
-    if (!canFetchMoreEntries(state.continuationToken)) {
-      dispatch(updatePage(start, state.entries.length - start));
+    if (!canFetchMoreRows(table.data.continuationToken)) {
+      dispatch(updatePage(start, table.data.rows.length - start));
       return Promise.resolve();
     }
 
     return tableStorageClient
-      .getRows(entriesPerPage, state.continuationToken)
+      .getRows(rowsPerPage, table.data.continuationToken)
       .then(result => {
         console.log(JSON.stringify(result));
-        dispatch(receiveEntries(data));
-        dispatch(updatePage(start, entriesPerPage));
+        dispatch(receiveData(result));
+        dispatch(updatePage(start, rowsPerPage));
       });
   }
 }

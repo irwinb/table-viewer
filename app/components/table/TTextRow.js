@@ -7,14 +7,14 @@ import {
 import React, { Component } from 'react';
 
 const TTextRow = ({
-  entry
+  row
 }) => (
   <TableRow>
     {Object
-      .keys(entry)
+      .keys(row)
       .map(key =>
-        <TableRowColumn key={entry.id}> 
-          {entry[key]}
+        <TableRowColumn key={row.id}> 
+          {row[key]}
         </TableRowColumn>)
     }
   </TableRow>

@@ -5,7 +5,7 @@
 			"path": ".",
 			"folder_exclude_patterns":
 		    [
-		        ".svn", ".git", ".hg", "CVS", "node_modules", ".vscode"
+		        ".svn", ".git", ".hg", "CVS", "node_modules", ".vscode", "dist", "dll"
 		    ]
 		}
 	]

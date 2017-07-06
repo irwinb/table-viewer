@@ -1,8 +1,8 @@
 // @flow
 import {
-  REQUEST_ENTRIES,
-  RECEIVE_ENTRIES,
-  RECEIVE_ENTRIES_FAILURE,
+  REQUEST_DATA,
+  RECEIVE_DATA,
+  RECEIVE_DATA_FAILURE,
   UPDATE_PAGE,
   UPDATE_TABLE,
 } from '../actions/table'
@@ -13,22 +13,14 @@ type BaseAction = {
   type: string
 };
 
-type Entries = {
+export type Data = {
   rows:              Array,
   continuationToken: ?string
-}
+};
 
 type PageState = {
   start: number,
   count: number
-};
-
- type Table = {
-  entries:        Array,
-  page:           PageState,
-  name:           string,
-  entriesPerPage: number,
-  isFetching:     bool
 };
 
 type PageAction = {
@@ -37,20 +29,20 @@ type PageAction = {
   count: number
 };
 
-type EntriesAction = {
+type DataAction = {
   type:     string,
   page:     number
 };
 
 type Metadata = {
   name:           ?string,
-  entriesPerPage: number
+  rowsPerPage: number
 };
 
 type MetadataAction = {
   type:           string,
   name:           string,
-  entriesPerPage: number
+  rowsPerPage: number
 };
 
 type Status = {
@@ -65,14 +57,14 @@ type StatusAction = {
 type Action =
   | BaseAction
   | PageAction
-  | EntriesAction
+  | DataAction
   | MetadataAction
   | StatusAction;
 
 // const config = new Conf();
 // TODO use a config that works
 const configDictionary = {
-  'table.entriesPerPage': 1000
+  'table.rowsPerPage': 1000
 };
 
 const config = {
@@ -81,14 +73,14 @@ const config = {
   }
 };
 
-const entriesPerPage = config.get('table.entriesPerPage');
+const rowsPerPage = config.get('table.rowsPerPage');
 
-function entries(state: Entries = {
+function data(state: Data = {
   rows: [],
   continuationToken: null
 }, action: Action) {
   switch (action.type) {
-    case RECEIVE_ENTRIES:
+    case RECEIVE_DATA:
       return Object.assign({}, state, {
         rows: [...state.rows, action.rows],
         continuationToken: action.continuationToken
@@ -115,13 +107,13 @@ function currentPage(state: PageState = {
 
 function metadata(state: Metadata = {
   name: null,
-  entriesPerPage
+  rowsPerPage
 }, action: Action) {
   switch (action.type) {
     case UPDATE_TABLE:
       return Object.assign({}, state, {
         name: action.name,
-        entriesPerPage: action.entriesPerPage
+        rowsPerPage: action.rowsPerPage
       });
     default:
       return state;
@@ -132,12 +124,12 @@ function status(state: Status = {
   isFetching: false
 }, action: Action) {
   switch (action.type) {
-    case REQUEST_ENTRIES:
+    case REQUEST_DATA:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case RECEIVE_ENTRIES:
-    case RECEIVE_ENTRIES_FAILURE:
+    case RECEIVE_DATA:
+    case RECEIVE_DATA_FAILURE:
       return Object.assign({}, state, {
         isFetching: false
       });
@@ -147,7 +139,7 @@ function status(state: Status = {
 }
 
 const table = combineReducers({
-  entries,
+  data,
   currentPage,
   metadata,
   status
