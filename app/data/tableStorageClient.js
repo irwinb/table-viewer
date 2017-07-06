@@ -6,13 +6,21 @@ import {
 import Bluebird from 'bluebird';
 import Conf from 'conf';
 
-const connString = 'nope';
-const config = new Conf();
+// const config = new Conf();
+// TODO use a config that works
+const configDictionary = {
+  'azure.maxRowsPerRequest': 1000
+};
 
-function TableStorageClientFactory(connectionString: string, entity: string) {
+const config = {
+  get(key) {
+    return configDictionary[key];
+  }
+};
+
+function TableStorageClientFactory(connectionString: string) {
   const proto = {
     maxRowsPerRequest: config.get('azure.maxRowsPerRequest'),
-    entity,
     table: createAsyncTableService(connectionString),
 
     getRows(count: number, continuationToken: string) {
@@ -36,7 +44,7 @@ function TableStorageClientFactory(connectionString: string, entity: string) {
   return proto;
 }
 
-function createAsyncTableService() {
+function createAsyncTableService(connString) {
   return Bluebird.promisifyAll(createTableService(connString), {
     promisifier: (func) => function (...args) {
       return new Promise((resolve, reject) => {

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TTable from './table/TTable';
 import TTextRow from './table/TTextRow';
+import TPagination from './TPagination';
 
 const data = [
   {id: 1, name: 'Smd Mmq', size: 10, hash: '1JFIJJJ%%J42j34jJ$j'},
@@ -23,6 +24,7 @@ export default class Table extends Component {
     return (
       <div>
         <div data-tid="container">
+          <TPagination totalNumberOfEntries={100} start={0} entriesPerPage={10} changePage={(s, e) => {}}/>
           <TTable entries={entries} rowType={TTextRow}/>
         </div>
       </div>

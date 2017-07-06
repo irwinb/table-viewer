@@ -9,92 +9,114 @@ import {
 import { combineReducers } from 'redux'
 import Conf from 'conf'
 
-export type pageStateType = {
-  start: number,
-  count: number
-};
-
-export type tableStateType = {
-  entries: array,
-  page: pageStateType,
-  name: string,
-  entriesPerPage: number,
-  continuationToken: string,
-  isFetching: bool
-};
-
-type actionType = {
+type BaseAction = {
   type: string
 };
 
-type pageActionType = {
-  type:     string,
+type Entries = {
+  rows:              Array,
+  continuationToken: ?string
+}
+
+type PageState = {
   start: number,
   count: number
 };
 
-type entriesActionType = {
+ type Table = {
+  entries:        Array,
+  page:           PageState,
+  name:           string,
+  entriesPerPage: number,
+  isFetching:     bool
+};
+
+type PageAction = {
+  type:  string,
+  start: number,
+  count: number
+};
+
+type EntriesAction = {
   type:     string,
   page:     number
 };
 
-type metadataType = {
-  name: string,
+type Metadata = {
+  name:           ?string,
   entriesPerPage: number
 };
 
-type metadataActionType = {
-  type: string,
-  name: string,
+type MetadataAction = {
+  type:           string,
+  name:           string,
   entriesPerPage: number
 };
 
-type statusType = {
+type Status = {
   isFetching: bool
 };
 
-type statusActionType = {
+type StatusAction = {
   type: string,
   isFetching: bool
 };
 
-const config = new Conf();
+type Action =
+  | BaseAction
+  | PageAction
+  | EntriesAction
+  | MetadataAction
+  | StatusAction;
+
+// const config = new Conf();
+// TODO use a config that works
+const configDictionary = {
+  'table.entriesPerPage': 1000
+};
+
+const config = {
+  get(key) {
+    return configDictionary[key];
+  }
+};
+
 const entriesPerPage = config.get('table.entriesPerPage');
 
-function entries(state: entriesStateType = {
+function entries(state: Entries = {
   rows: [],
   continuationToken: null
-}, action: entriesActionType) {
+}, action: Action) {
   switch (action.type) {
     case RECEIVE_ENTRIES:
       return Object.assign({}, state, {
         rows: [...state.rows, action.rows],
-        action.continuationToken
+        continuationToken: action.continuationToken
       });
     default:
       return state;
   }
 }
 
-function currentPage(state: pageStateType = {
+function currentPage(state: PageState = {
   start: 0,
   count: 0
-}, action: pageActionType) {
+}, action: Action) {
   switch (action.type) {
     case UPDATE_PAGE:
       return Object.assign({}, state, {
-        action.start,
-        action.count
+        start: action.start,
+        count: action.count
       });
     default:
       return state;
   }
 }
 
-function metadata(state: metadataType = {
+function metadata(state: Metadata = {
   name: null,
   entriesPerPage
-}, action: metadataActionType) {
+}, action: Action) {
   switch (action.type) {
     case UPDATE_TABLE:
       return Object.assign({}, state, {
@@ -106,9 +128,9 @@ function metadata(state: metadataType = {
   }
 }
 
-function status(state: statusType = {
+function status(state: Status = {
   isFetching: false
-}, action: statusActionType) {
+}, action: Action) {
   switch (action.type) {
     case REQUEST_ENTRIES:
       return Object.assign({}, state, {
@@ -124,9 +146,11 @@ function status(state: statusType = {
   }
 }
 
-export default table = combineReducers({
+const table = combineReducers({
   entries,
   currentPage,
   metadata,
   status
 });
+
+export default table;

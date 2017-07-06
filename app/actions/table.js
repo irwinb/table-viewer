@@ -1,15 +1,16 @@
 // @flow
-import createTableStorageClient from './table/tableStorageClient'
+import TableStorageClientFactory from '../data/tableStorageClient'
 import Promise from 'bluebird'
 
-const tableStorageClient = createTableStorageClient();
+const connString = 'DefaultEndpointsProtocol=https;AccountName=gggspotify;AccountKey=sWOVzABIyZGU7hmJFa0AMTAlahB3aVvObrjZ5wKswrWwJ5IbeXKgEQv4eUy7SdAJS/fD7aa/JkHn2H20EUmdpw==;EndpointSuffix=core.windows.net';
+const tableStorageClient = TableStorageClientFactory(connString);
 
 type actionType = {
   type: string
 };
 
 export const CHANGE_TABLE = 'CHANGE_TABLE';
-export function updateTable(name) {
+export function changeTable(name) {
   return {
     type: CHANGE_TABLE,
     name

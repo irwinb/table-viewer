@@ -4,7 +4,6 @@ import Table from '../components/Table';
 import * as TableActions from '../actions/table';
 
 function mapStateToProps(state) {
-  console.log(`mapState: ${JSON.stringify(state)}`);
   return {
     entries: state.table.entries
   };
