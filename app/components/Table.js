@@ -3,21 +3,21 @@ import React, { Component } from 'react';
 import TTable from './table/TTable';
 import TTextRow from './table/TTextRow';
 import TPagination from './TPagination';
-import { Data } from '../reducers/table';
 
 export default class Table extends Component {
   props: {
-    data: Data,
+    rows: Array,
+    columns: Array,
     changePage: () => void
   };
 
   render() {
-    const { data, changePage } = this.props;
+    const { rows, changePage, columns } = this.props;
     return (
       <div>
         <div data-tid="container">
-          <TPagination totalNumberOfEntries={data.rows.length} start={0} entriesPerPage={10} changePage={changePage}/>
-          <TTable rows={data.rows} rowType={TTextRow}/>
+          <TPagination totalNumberOfEntries={rows.length} start={0} entriesPerPage={10} changePage={changePage} />
+          <TTable rows={rows} columns={columns} rowType={TTextRow} />
         </div>
       </div>
     );

@@ -1,10 +1,9 @@
 // @flow
+import React from 'react';
 import { 
-  TableRowColumn, 
+  TableCell, 
   TableRow 
 } from 'material-ui/Table';
-
-import React, { Component } from 'react';
 
 const TTextRow = ({
   row
@@ -13,9 +12,9 @@ const TTextRow = ({
     {Object
       .keys(row)
       .map(key =>
-        <TableRowColumn key={row.id}> 
+        <TableCell key={row.id}> 
           {row[key]}
-        </TableRowColumn>)
+        </TableCell>)
     }
   </TableRow>
 );

@@ -13,11 +13,6 @@ type BaseAction = {
   type: string
 };
 
-export type Data = {
-  rows:              Array,
-  continuationToken: ?string
-};
-
 type PageState = {
   start: number,
   count: number
@@ -29,20 +24,29 @@ type PageAction = {
   count: number
 };
 
-type DataAction = {
+type ContinuationTokenAction = {
+  type:              string,
+  continuationToken: ?string
+};
+
+type NameAction = {
+  type: string,
+  name: ?string
+};
+
+type RowsAction = {
   type:     string,
-  page:     number
+  rows:     Array
 };
 
-type Metadata = {
-  name:           ?string,
-  rowsPerPage: number
+type ColumnsAction = {
+  type:     string,
+  columns:  Array
 };
 
-type MetadataAction = {
+type RowsPerPageAction = {
   type:           string,
-  name:           string,
-  rowsPerPage: number
+  rowsPerPage:    number
 };
 
 type Status = {
@@ -57,14 +61,15 @@ type StatusAction = {
 type Action =
   | BaseAction
   | PageAction
-  | DataAction
-  | MetadataAction
+  | RowsAction
+  | NameAction
+  | RowsPerPageAction
   | StatusAction;
 
 // const config = new Conf();
 // TODO use a config that works
 const configDictionary = {
-  'table.rowsPerPage': 1000
+  'table.defaultRowsPerPage': 1000
 };
 
 const config = {
@@ -73,24 +78,36 @@ const config = {
   }
 };
 
-const rowsPerPage = config.get('table.rowsPerPage');
+const defaultRowsPerPage = config.get('table.defaultRowsPerPage');
 
-function data(state: Data = {
-  rows: [],
-  continuationToken: null
-}, action: Action) {
+function rows(state: Array = [], action: Action) {
   switch (action.type) {
     case RECEIVE_DATA:
-      return Object.assign({}, state, {
-        rows: [...state.rows, action.rows],
-        continuationToken: action.continuationToken
-      });
+      return [...rows, action.rows];
     default:
       return state;
   }
 }
 
-function currentPage(state: PageState = {
+function columns(state: Array = [], action: Action) {
+  switch (action.type) {
+    case RECEIVE_DATA:
+      return [...columns, action.columns];
+    default:
+      return state;
+  }
+}
+
+function continuationToken(state: ?string = null, action: Action) {
+  switch (action.type) {
+    case RECEIVE_DATA:
+      return action.continuationToken;
+    default:
+      return state
+  }
+}
+
+function page(state: PageState = {
   start: 0,
   count: 0
 }, action: Action) {
@@ -105,16 +122,21 @@ function currentPage(state: PageState = {
   }
 }
 
-function metadata(state: Metadata = {
-  name: null,
-  rowsPerPage
-}, action: Action) {
+function rowsPerPage(
+  state: number = defaultRowsPerPage, 
+  action: Action) {
   switch (action.type) {
     case UPDATE_TABLE:
-      return Object.assign({}, state, {
-        name: action.name,
-        rowsPerPage: action.rowsPerPage
-      });
+      return action.rowsPerPage;
+    default:
+      return state;
+  }
+}
+
+function name(state: ?string = null, action: Action) {
+  switch (action.type) {
+    case UPDATE_TABLE:
+      return action.name;
     default:
       return state;
   }
@@ -139,10 +161,13 @@ function status(state: Status = {
 }
 
 const table = combineReducers({
-  data,
-  currentPage,
-  metadata,
-  status
+  rows,
+  columns,
+  page,
+  rowsPerPage,
+  name,
+  status,
+  continuationToken
 });
 
 export default table;

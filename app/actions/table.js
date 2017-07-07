@@ -72,28 +72,27 @@ function canFetchMoreRows(continuationToken) {
 export function changePage(start) {
   return (dispatch: () => mixed, getState: () => mixed) => {
     const table = getState().table;
-    const rowsPerPage = table.metadata.rowsPerPage;
 
     if (start < 0) {
       return Promise.resolve();
     }
 
-    if (!needToFetchMoreRows(table.data.rows, start, rowsPerPage)) {
-      dispatch(updatePage(start, rowsPerPage));
+    if (!needToFetchMoreRows(table.rows, start, table.rowsPerPage)) {
+      dispatch(updatePage(start, table.rowsPerPage));
       return Promise.resolve();
     }
 
-    if (!canFetchMoreRows(table.data.continuationToken)) {
-      dispatch(updatePage(start, table.data.rows.length - start));
+    if (!canFetchMoreRows(table.continuationToken)) {
+      dispatch(updatePage(start, table.rows.length - start));
       return Promise.resolve();
     }
 
     return tableStorageClient
-      .getRows(rowsPerPage, table.data.continuationToken)
+      .getRows(table.rowsPerPage, table.continuationToken)
       .then(result => {
         console.log(JSON.stringify(result));
         dispatch(receiveData(result));
-        dispatch(updatePage(start, rowsPerPage));
+        dispatch(updatePage(start, table.rowsPerPage));
       });
   }
 }

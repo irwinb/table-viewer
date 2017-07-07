@@ -5,7 +5,8 @@ import * as TableActions from '../actions/table';
 
 function mapStateToProps(state) {
   return {
-    data: state.table.data
+    rows: state.table.rows,
+    columns: state.table.columns
   };
 }
 
