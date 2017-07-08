@@ -15,7 +15,7 @@ const TPagination = ({
   const numberOfPages = Math.ceil(totalNumberOfEntries / entriesPerPage);
   const currentPageNum = Math.ceil(start / entriesPerPage) + 1;
   const prevStart = start > entriesPerPage ? start - entriesPerPage : 0;
-  
+
   return (
     <div>
       <IconButton 
@@ -26,7 +26,7 @@ const TPagination = ({
       {Array
         .from(Array(numberOfPages))
         .map((elem, index) => 
-          <Button key={index + 1}>{index + 1}</Button>)}
+          <Button key={index + 1} onClick={() => changePage(entriesPerPage * index, entriesPerPage)} >{index + 1}</Button>)}
       <IconButton 
         disabled={start + entriesPerPage >= totalNumberOfEntries} 
         onClick={() => changePage(start + entriesPerPage, entriesPerPage)}>

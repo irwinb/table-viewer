@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import Table, {
   TableBody, 
   TableHead,
-  TableCell
+  TableCell,
+  TableRow 
 } from 'material-ui/Table';
 
 export default class TTable extends Component {
@@ -15,15 +16,16 @@ export default class TTable extends Component {
 
   render() {
     const Row = this.props.rowType;
+    const { rows, columns } = this.props;
     return (
       <Table>
-        <TableHead>
-          {this.props.columns.map(col =>
-            <TableCell key={`t-col-${col}`}>{col}</TableCell>)}
-        </TableHead>
+        <TableHead><TableRow>
+          {columns.map(col =>
+            <TableCell key={`t-header-${col}`}>{col}</TableCell>)}
+        </TableRow></TableHead>
         <TableBody>
-          {this.props.rows.map(row =>
-            <Row row={row} key={row.id} />
+          {rows.map(row =>
+            <Row columns={columns} row={row} key={row.id} />
           )}
         </TableBody>
       </Table>

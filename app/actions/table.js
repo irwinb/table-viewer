@@ -70,7 +70,9 @@ function canFetchMoreRows(continuationToken) {
  * @param {number} start position of the first element. zero-indexed.
  */
 export function changePage(start) {
+  console.log('lol')
   return (dispatch: () => mixed, getState: () => mixed) => {
+    console.log('hi')
     const table = getState().table;
 
     if (start < 0) {

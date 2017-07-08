@@ -1,22 +1,19 @@
 // @flow
 import React from 'react';
 import { 
-  TableCell, 
+  TableCell,
   TableRow 
 } from 'material-ui/Table';
 
-const TTextRow = ({
-  row
+export default (props: {
+  columns: Array<string>,
+  row: {}
 }) => (
   <TableRow>
-    {Object
-      .keys(row)
-      .map(key =>
-        <TableCell key={row.id}> 
-          {row[key]}
+    {props.columns
+      .map(col =>
+        <TableCell key={`t-cell-${col}`}> 
+          {props.row[col]}
         </TableCell>)
     }
-  </TableRow>
-);
-
-export default TTextRow;
+  </TableRow>);

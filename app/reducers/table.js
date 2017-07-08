@@ -113,6 +113,7 @@ function page(state: PageState = {
 }, action: Action) {
   switch (action.type) {
     case UPDATE_PAGE:
+      console.log(`change page! ${JSON.stringify(state)}`);
       return Object.assign({}, state, {
         start: action.start,
         count: action.count
