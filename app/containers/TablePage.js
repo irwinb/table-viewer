@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import TableExplorer from '../components/TableExplorer';
+import TableExplorer from '../components/table-explorer';
 import { changePage } from '../actions/table';
 
 function mapStateToProps(state) {

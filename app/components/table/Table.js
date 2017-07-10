@@ -12,8 +12,8 @@ export default class extends Component {
   props: {
     rows: Array<RowData>,
     columns: Array<string>,
-    rowType: Component<mixed>
-  }
+    rowType: Component<mixed, mixed, mixed>
+  };
 
   render() {
     const { rows, columns, rowType } = this.props;
