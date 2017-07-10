@@ -4,28 +4,16 @@ import {
   TableQuery
 } from 'azure-storage';
 import Bluebird from 'bluebird';
-import Conf from 'conf';
-
-// const config = new Conf();
-// TODO use a config that works
-const configDictionary = {
-  'azure.maxRowsPerRequest': 1000
-};
-
-const config = {
-  get(key) {
-    return configDictionary[key];
-  }
-};
+import Conf from '../conf';
 
 function TableStorageClientFactory(connectionString: string) {
   const proto = {
-    maxRowsPerRequest: config.get('azure.maxRowsPerRequest'),
+    maxRowsPerRequest: Conf.get('data.maxRowsPerRequest'),
     table: createAsyncTableService(connectionString),
 
     getRows(count: number, continuationToken: string) {
-      if (count > maxRowsPerRequest) {
-        throw new Error(`number of rows must be (0,${maxRowsPerRequest}]`);
+      if (count > this.maxRowsPerRequest) {
+        throw new Error(`number of rows must be (0,${this.maxRowsPerRequest}]`);
       }
 
       const getAllQuery = new TableQuery()
@@ -46,12 +34,15 @@ function TableStorageClientFactory(connectionString: string) {
 
 function createAsyncTableService(connString) {
   return Bluebird.promisifyAll(createTableService(connString), {
-    promisifier: (func) => function (...args) {
+    promisifier: (func) => function promisifier(...args) {
       return new Promise((resolve, reject) => {
         try {
           func.call(this, ...args, (err, result, response) => {
-            err && reject(err);
-            resolve({result, response});
+            if (err) {
+              reject(err);
+            } else {
+              resolve({ result, response });
+            }
           });
         } catch (e) {
           reject(e);
@@ -59,6 +50,6 @@ function createAsyncTableService(connString) {
       });
     }
   });
-};
+}
 
 export default TableStorageClientFactory;

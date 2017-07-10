@@ -6,6 +6,8 @@ import path from 'path';
 import webpack from 'webpack';
 import { dependencies as externals } from './app/package.json';
 
+console.log(`externals: ${JSON.stringify(externals)}`);
+
 export default {
   externals: Object.keys(externals || {}),
 

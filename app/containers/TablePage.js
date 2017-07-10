@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Table from '../components/Table';
+import TableExplorer from '../components/TableExplorer';
 import { changePage } from '../actions/table';
 
 function mapStateToProps(state) {
@@ -14,4 +14,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ changePage }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(TableExplorer);

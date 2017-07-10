@@ -1,6 +1,6 @@
 // @flow
 import Promise from 'bluebird';
-import TableStorageClientFactory from '../data/tableStorageClient';
+import TableStorageClientFactory from '../../data/tableStorageClient';
 
 const connString = 'DefaultEndpointsProtocol=https;AccountName=gggspotify;AccountKey=sWOVzABIyZGU7hmJFa0AMTAlahB3aVvObrjZ5wKswrWwJ5IbeXKgEQv4eUy7SdAJS/fD7aa/JkHn2H20EUmdpw==;EndpointSuffix=core.windows.net';
 const tableStorageClient = TableStorageClientFactory(connString);
@@ -42,7 +42,7 @@ export function requestData(): ActionType {
 }
 
 export const RECEIVE_DATA = 'RECEIVE_DATA';
-export function receiveData(data: mixed): ActionType {
+export function receiveData(data: any): ActionType {
   return {
     type: RECEIVE_DATA,
     data

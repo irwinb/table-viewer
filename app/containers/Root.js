@@ -14,9 +14,9 @@ export default function Root({ store, history }: RootType) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-      	<MuiThemeProvider>
-        	<Routes />
-      	</MuiThemeProvider>
+        <MuiThemeProvider>
+          <Routes />
+        </MuiThemeProvider>
       </ConnectedRouter>
     </Provider>
   );

@@ -1,13 +1,13 @@
 // @flow
+import { combineReducers } from 'redux';
+import Conf from '../../conf';
 import {
   REQUEST_DATA,
   RECEIVE_DATA,
   RECEIVE_DATA_FAILURE,
   UPDATE_PAGE,
   UPDATE_TABLE,
-} from '../actions/table'
-import { combineReducers } from 'redux'
-import Conf from 'conf'
+} from './actions';
 
 type BaseAction = {
   type: string
@@ -19,13 +19,13 @@ type PageState = {
 };
 
 type PageAction = {
-  type:  string,
+  type: string,
   start: number,
   count: number
 };
 
 type ContinuationTokenAction = {
-  type:              string,
+  type: string,
   continuationToken: ?string
 };
 
@@ -35,27 +35,27 @@ type NameAction = {
 };
 
 type RowsAction = {
-  type:     string,
-  rows:     Array
+  type: string,
+  rows: Array
 };
 
 type ColumnsAction = {
-  type:     string,
-  columns:  Array
+  type: string,
+  columns: Array
 };
 
 type RowsPerPageAction = {
-  type:           string,
-  rowsPerPage:    number
+  type: string,
+  rowsPerPage: number
 };
 
 type Status = {
-  isFetching: bool
+  isFetching: boolean
 };
 
 type StatusAction = {
   type: string,
-  isFetching: bool
+  isFetching: boolean
 };
 
 type Action =
@@ -64,26 +64,15 @@ type Action =
   | RowsAction
   | NameAction
   | RowsPerPageAction
-  | StatusAction;
+  | StatusAction
+  | ContinuationTokenAction;
 
-// const config = new Conf();
-// TODO use a config that works
-const configDictionary = {
-  'table.defaultRowsPerPage': 1000
-};
-
-const config = {
-  get(key) {
-    return configDictionary[key];
-  }
-};
-
-const defaultRowsPerPage = config.get('table.defaultRowsPerPage');
+const defaultRowsPerPage = Conf.get('data.defaultRowsPerPage');
 
 function rows(state: Array = [], action: Action) {
   switch (action.type) {
     case RECEIVE_DATA:
-      return [...rows, action.rows];
+      return [...state, action.rows];
     default:
       return state;
   }
@@ -92,7 +81,7 @@ function rows(state: Array = [], action: Action) {
 function columns(state: Array = [], action: Action) {
   switch (action.type) {
     case RECEIVE_DATA:
-      return [...columns, action.columns];
+      return [...state, action.columns];
     default:
       return state;
   }
@@ -103,7 +92,7 @@ function continuationToken(state: ?string = null, action: Action) {
     case RECEIVE_DATA:
       return action.continuationToken;
     default:
-      return state
+      return state;
   }
 }
 
@@ -124,7 +113,7 @@ function page(state: PageState = {
 }
 
 function rowsPerPage(
-  state: number = defaultRowsPerPage, 
+  state: number = defaultRowsPerPage,
   action: Action) {
   switch (action.type) {
     case UPDATE_TABLE:

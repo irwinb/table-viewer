@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"UPDATE_",
+				"UPDATE_TABLE"
+			],
+			[
 				"Stat",
 				"StatusAction"
 			],
@@ -48,37 +52,28 @@
 	"buffers":
 	[
 		{
-			"file": "app/components/TPagination.js",
-			"settings":
-			{
-				"buffer_size": 1267,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/reducers/table.js",
 			"settings":
 			{
-				"buffer_size": 2973,
+				"buffer_size": 2770,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/containers/TablePage.js",
+			"file": "app/routes.js",
 			"settings":
 			{
-				"buffer_size": 452,
+				"buffer_size": 416,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "app/components/table/TTable.js",
 			"settings":
 			{
-				"buffer_size": 720,
+				"buffer_size": 730,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -87,7 +82,16 @@
 			"file": "app/actions/table.js",
 			"settings":
 			{
-				"buffer_size": 2374,
+				"buffer_size": 2540,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/data/tableStorageClient.js",
+			"settings":
+			{
+				"buffer_size": 1420,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -96,25 +100,7 @@
 			"file": "app/components/Table.js",
 			"settings":
 			{
-				"buffer_size": 680,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/table/TTextRow.js",
-			"settings":
-			{
-				"buffer_size": 333,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/data/tableStorageClient.js",
-			"settings":
-			{
-				"buffer_size": 1541,
+				"buffer_size": 664,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -127,16 +113,28 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 185.0,
-		"last_filter": "isntall",
+		"height": 320.0,
+		"last_filter": "install",
 		"selected_items":
 		[
 			[
-				"isntall",
+				"install",
 				"Package Control: Install Package"
 			],
 			[
-				"install",
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"isntal",
+				"Package Control: Install Package"
+			],
+			[
+				"isntall",
 				"Package Control: Install Package"
 			],
 			[
@@ -179,26 +177,37 @@
 	[
 		"/C/dev/table-viewer",
 		"/C/dev/table-viewer/app",
-		"/C/dev/table-viewer/app/components",
-		"/C/dev/table-viewer/app/containers"
+		"/C/dev/table-viewer/app/conf"
 	],
 	"file_history":
 	[
+		"/C/dev/table-viewer/app/conf/index.js",
 		"/C/dev/table-viewer/app/index.js",
-		"/C/dev/table-viewer/package.json",
-		"/C/dev/table-viewer/node_modules/material-ui/package.json",
-		"/C/dev/table-viewer/app/components/table/TTable.js",
-		"/C/dev/table-viewer/app/containers/TablePage.js",
-		"/C/dev/table-viewer/app/components/table/TTextRow.js",
-		"/C/dev/table-viewer/node_modules/material-ui/Button/Button.js",
-		"/C/dev/table-viewer/app/components/TPagination.js",
-		"/C/dev/table-viewer/app/components/Table.js",
 		"/C/dev/table-viewer/s.sublime-project",
-		"/C/dev/table-viewer/app/store/configureStore.dev.js",
+		"/C/dev/table-viewer/package.json",
+		"/C/dev/table-viewer/app/config/config.js",
+		"/C/dev/table-viewer/flow-typed/npm/material-ui_vx.x.x.js",
+		"/C/dev/table-viewer/app/package.json",
+		"/C/dev/table-viewer/webpack.config.base.js",
+		"/C/dev/table-viewer/app/data/tableStorageClient.js",
+		"/C/dev/table-viewer/app/components/table/TTable.js",
+		"/C/dev/table-viewer/flow-typed/npm/enzyme_v2.3.x.js",
+		"/C/dev/table-viewer/app/components/table/TTextRow.js",
+		"/C/dev/table-viewer/flow-typed/npm/material-ui.js",
+		"/C/dev/table-viewer/.flowconfig",
+		"/C/Users/Irwin/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/dev/table-viewer/.eslintrc",
+		"/C/dev/table-viewer/test/actions/counter.spec.js",
+		"/C/dev/table-viewer/.gitattributes",
+		"/C/dev/table-viewer/app/components/TPagination.js",
+		"/C/dev/table-viewer/app/containers/TablePage.js",
 		"/C/dev/table-viewer/app/store/configureStore.prod.js",
+		"/C/dev/table-viewer/app/store/configureStore.dev.js",
+		"/C/dev/table-viewer/node_modules/material-ui/package.json",
+		"/C/dev/table-viewer/node_modules/material-ui/Button/Button.js",
+		"/C/dev/table-viewer/app/components/Table.js",
 		"/C/dev/table-viewer/app/components/Home.js",
 		"/C/dev/table-viewer/app/reducers/index.js",
-		"/C/dev/table-viewer/app/data/tableStorageClient.js",
 		"/C/dev/table-viewer/app/components/Counter.js",
 		"/C/dev/table-viewer/app/actions/counter.js",
 		"/C/dev/table-viewer/app/utils/tableStorageClient.js",
@@ -257,6 +266,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"defaultRowsPerPage",
+			"rowsperpage",
+			"ContinuationTokenAction",
+			"conf",
+			"config:",
+			"defaultRowsPerPage",
+			"rowsperpage",
+			"'conf'",
+			"eslint",
+			"counter",
+			"eslint",
 			"key",
 			"rowsPerPage",
 			"rows",
@@ -362,19 +382,143 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/components/TPagination.js",
+					"file": "app/reducers/table.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1267,
+						"buffer_size": 2770,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								675,
-								675
+								173,
+								173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								113,
+								113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/components/table/TTable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								144,
+								144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "app/actions/table.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/data/tableStorageClient.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1420,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								723,
+								723
 							]
 						],
 						"settings":
@@ -388,131 +532,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/reducers/table.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2973,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1735,
-								1735
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2028.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/containers/TablePage.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 452,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								383,
-								383
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/components/table/TTable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 720,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								251,
-								251
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "app/actions/table.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2374,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1567,
-								1577
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1326.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -521,49 +541,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 680,
+						"buffer_size": 664,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								393,
-								393
+								249,
+								249
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/components/table/TTextRow.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 333,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								99,
-								99
-							]
-						],
-						"settings":
-						{
+							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -573,36 +564,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/data/tableStorageClient.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1541,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								912,
-								912
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 156.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -636,7 +597,7 @@
 		"cols":
 		[
 			0.0,
-			0.535351303579,
+			0.519885108263,
 			1.0
 		],
 		"rows":
@@ -664,12 +625,64 @@
 		"selected_items":
 		[
 			[
-				"pack",
+				"index",
+				"app\\index.js"
+			],
+			[
+				"packa",
 				"package.json"
+			],
+			[
+				"package",
+				"app\\package.json"
+			],
+			[
+				"package.",
+				"package.json"
+			],
+			[
+				"webpack.config",
+				"webpack.config.base.js"
 			],
 			[
 				"ttabl",
 				"app\\components\\table\\TTable.js"
+			],
+			[
+				"materi",
+				"flow-typed\\npm\\material-ui.js"
+			],
+			[
+				"ttab",
+				"app\\components\\table\\TTable.js"
+			],
+			[
+				"material-ui",
+				"flow-typed\\npm\\material-ui.js"
+			],
+			[
+				"material",
+				"flow-typed\\npm\\material-ui.js"
+			],
+			[
+				"packag",
+				"package.json"
+			],
+			[
+				".f",
+				".flowconfig"
+			],
+			[
+				"package.j",
+				"package.json"
+			],
+			[
+				"gitatt",
+				".gitattributes"
+			],
+			[
+				"pack",
+				"package.json"
 			],
 			[
 				"tpagination",
@@ -678,10 +691,6 @@
 			[
 				"client",
 				"app\\data\\tableStorageClient.js"
-			],
-			[
-				"packag",
-				"package.json"
 			],
 			[
 				"counter",
@@ -702,10 +711,6 @@
 			[
 				"config",
 				"config.json"
-			],
-			[
-				"packa",
-				"package.json"
 			]
 		],
 		"width": 0.0

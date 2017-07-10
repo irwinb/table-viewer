@@ -1,22 +1,22 @@
 // @flow
 import React, { Component } from 'react';
 import Table, {
-  TableBody, 
+  TableBody,
   TableHead,
   TableCell,
-  TableRow 
+  TableRow
 } from 'material-ui/Table';
+import type { RowData } from './types';
 
-export default class TTable extends Component {
+export default class extends Component {
   props: {
-    rows: Array,
+    rows: Array<RowData>,
     columns: Array<string>,
-    rowType: any
+    rowType: Component<mixed>
   }
 
   render() {
-    const Row = this.props.rowType;
-    const { rows, columns } = this.props;
+    const { rows, columns, rowType } = this.props;
     return (
       <Table>
         <TableHead><TableRow>
@@ -25,7 +25,7 @@ export default class TTable extends Component {
         </TableRow></TableHead>
         <TableBody>
           {rows.map(row =>
-            <Row columns={columns} row={row} key={row.id} />
+            <rowType columns={columns} row={row} key={row.id} />
           )}
         </TableBody>
       </Table>
