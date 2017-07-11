@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import type { RowData } from '../table/types';
-import Table from '../table';
+import Table from '../table/Table';
 import TextRow from '../table/TextRow';
-import Pagination from '../pagination';
+import Pagination from '../pagination/pagination';
 
 export default class extends Component {
   props: {

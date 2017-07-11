@@ -8,6 +8,9 @@ import Table, {
 } from 'material-ui/Table';
 import type { RowData } from './types';
 
+type RowType =
+  | Component<mixed, mixed, mixed>;
+
 export default class extends Component {
   props: {
     rows: Array<RowData>,
