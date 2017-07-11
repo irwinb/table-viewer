@@ -1,12 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TableExplorer from '../components/table-explorer';
-import { changePage } from '../actions/table';
+import { changePage } from '../components/table/actions';
+import getCurrentPageRows from '../components/table/selectors';
 
 function mapStateToProps(state) {
   return {
-    rows: state.table.rows,
-    columns: state.table.columns
+    rows: getCurrentPageRows(state),
+    columns: state.table.columns,
+    totalNumberOfRows: state.table.rows.length
   };
 }
 

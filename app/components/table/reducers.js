@@ -13,7 +13,7 @@ type BaseAction = {
   type: string
 };
 
-type PageState = {
+export type PageState = {
   start: number,
   count: number
 };
@@ -98,7 +98,7 @@ function continuationToken(state: ?string = null, action: Action) {
 
 function page(state: PageState = {
   start: 0,
-  count: 0
+  count: defaultRowsPerPage
 }, action: Action) {
   switch (action.type) {
     case UPDATE_PAGE:

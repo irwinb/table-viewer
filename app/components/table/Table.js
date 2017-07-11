@@ -6,20 +6,18 @@ import Table, {
   TableCell,
   TableRow
 } from 'material-ui/Table';
-import type { RowData } from './types';
-
-type RowType =
-  | Component<mixed, mixed, mixed>;
+import type { RowData, RowType } from './types';
 
 export default class extends Component {
   props: {
     rows: Array<RowData>,
     columns: Array<string>,
-    rowType: Component<mixed, mixed, mixed>
+    rowType: RowType
   };
 
   render() {
-    const { rows, columns, rowType } = this.props;
+    const ChildRowType: RowType = this.props.rowType;
+    const { rows, columns } = this.props;
     return (
       <Table>
         <TableHead><TableRow>
@@ -28,7 +26,7 @@ export default class extends Component {
         </TableRow></TableHead>
         <TableBody>
           {rows.map(row =>
-            <rowType columns={columns} row={row} key={row.id} />
+            <ChildRowType columns={columns} row={row} key={row.id} />
           )}
         </TableBody>
       </Table>

@@ -1,29 +1,31 @@
 // @flow
 import React, { Component } from 'react';
 import type { RowData } from '../table/types';
+import type { ChangePage } from '../pagination/types';
 import Table from '../table/Table';
 import TextRow from '../table/TextRow';
-import Pagination from '../pagination/pagination';
+import Pagination from '../pagination';
 
 export default class extends Component {
   props: {
     rows: Array<RowData>,
     columns: Array<string>,
-    changePage: () => void
+    changePage: ChangePage,
+    totalNumberOfRows: number
   };
 
   render() {
-    const { rows, changePage, columns } = this.props;
+    const { rows, changePage, columns, totalNumberOfRows } = this.props;
     return (
       <div>
         <div data-tid="container">
+          <Table rows={rows} columns={columns} rowType={TextRow} />
           <Pagination
-            totalNumberOfEntries={rows.length}
+            totalNumberOfElements={totalNumberOfRows}
             start={0}
-            entriesPerPage={10}
+            elementsPerPage={10}
             changePage={changePage}
           />
-          <Table rows={rows} columns={columns} rowType={TextRow} />
         </div>
       </div>
     );

@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Home.css';
+import styles from './styles.css';
 
-export default class Home extends Component {
+export default class extends Component {
   render() {
     return (
       <div>
