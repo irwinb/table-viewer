@@ -44,10 +44,8 @@ type StatusAction = {
 
 type Action =
   | BaseAction
-  | PageAction
   | RowsAction
   | NameAction
-  | RowsPerPageAction
   | StatusAction
   | ContinuationTokenAction;
 
