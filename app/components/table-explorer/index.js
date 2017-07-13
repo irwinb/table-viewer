@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import type { RowData } from '../table/types';
+import type { RowData,  PageType } from '../table/types';
 import type { ChangePage } from '../pagination/types';
 import Table from '../table/Table';
 import TextRow from '../table/TextRow';
@@ -11,19 +11,19 @@ export default class extends Component {
     rows: Array<RowData>,
     columns: Array<string>,
     changePage: ChangePage,
-    totalNumberOfRows: number
+    page: PageType
   };
 
   render() {
-    const { rows, changePage, columns, totalNumberOfRows } = this.props;
+    const { rows, changePage, columns, page } = this.props;
     return (
       <div>
         <div data-tid="container">
           <Table rows={rows} columns={columns} rowType={TextRow} />
           <Pagination
-            totalNumberOfElements={totalNumberOfRows}
-            start={0}
-            elementsPerPage={10}
+            totalNumberOfElements={page.totalNumberOfRows}
+            start={page.start}
+            elementsPerPage={page.count}
             changePage={changePage}
           />
         </div>

@@ -13,17 +13,6 @@ type BaseAction = {
   type: string
 };
 
-export type PageState = {
-  start: number,
-  count: number
-};
-
-type PageAction = {
-  type: string,
-  start: number,
-  count: number
-};
-
 type ContinuationTokenAction = {
   type: string,
   continuationToken: ?string
@@ -42,11 +31,6 @@ type RowsAction = {
 type ColumnsAction = {
   type: string,
   columns: Array
-};
-
-type RowsPerPageAction = {
-  type: string,
-  rowsPerPage: number
 };
 
 type Status = {

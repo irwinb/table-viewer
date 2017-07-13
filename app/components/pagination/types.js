@@ -1,2 +1,8 @@
 // @flow
-export type ChangePage = (number) => void;
+export type ChangePageCallback = (number) => void;
+
+export type PageState = {
+  start: number,
+  count: number,
+  totalNumberOfRows: number
+};

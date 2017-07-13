@@ -17,7 +17,7 @@ export default (props: {
   const numberOfPages = Math.ceil(totalNumberOfElements / elementsPerPage);
   const currentPageNum = Math.ceil(start / elementsPerPage) + 1;
   const prevStart = start > elementsPerPage ? start - elementsPerPage : 0;
-
+  console.log(start);
   const pageButtons = Array
     .from(Array(numberOfPages))
     .map((elem, index) => {

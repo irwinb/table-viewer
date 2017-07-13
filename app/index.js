@@ -11,7 +11,9 @@ const initialState = {
     columns: ['id', 'name', 'size', 'hash'],
     name: 'hi',
     rowsPerPage: 10
-  }
+  },
+  data: [],
+  page: {}
 };
 initialState.table.rows = Array
   .from(Array(100))

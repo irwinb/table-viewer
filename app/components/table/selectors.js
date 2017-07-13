@@ -8,7 +8,7 @@ const getRows = (state): Array<RowData> => state.table.rows;
 
 const getCurrentPageRows = createSelector(
   [getPage, getRows],
-  (page, rows) => rows.slice(page.start, page.count)
+  (page, rows) => rows.slice(page.start, page.start + page.count)
 );
 
 export default getCurrentPageRows;

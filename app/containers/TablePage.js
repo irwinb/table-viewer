@@ -8,7 +8,7 @@ function mapStateToProps(state) {
   return {
     rows: getCurrentPageRows(state),
     columns: state.table.columns,
-    totalNumberOfRows: state.table.rows.length
+    page: state.page
   };
 }
 
