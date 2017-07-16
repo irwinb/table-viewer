@@ -7,24 +7,20 @@ import './app.global.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const initialState = {
-  table: {
-    columns: ['id', 'name', 'size', 'hash'],
-    name: 'hi',
-    rowsPerPage: 10
-  },
-  data: [],
-  page: {}
+  tableExplorer: {
+    table: {
+      columns: ['id', 'name', 'size', 'hash']
+    }
+  }
 };
-initialState.table.rows = Array
+initialState.tableExplorer.rows = Array
   .from(Array(100))
-  .map((val, index) => {
-    return {
-      id: `${index}`,
-      name: 'Smd Mmq',
-      size: 10,
-      hash: '1JFIJJJ%%J42j34jJ$j'
-    };
-  });
+  .map((val, index) => ({
+    id: `${index}`,
+    name: 'Smd Mmq',
+    size: 10,
+    hash: '1JFIJJJ%%J42j34jJ$j'
+  }));
 
 const store = configureStore(initialState);
 

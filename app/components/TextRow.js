@@ -4,7 +4,10 @@ import {
   TableCell,
   TableRow
 } from 'material-ui/Table';
-import type { RowData } from './types';
+
+export type RowData = {
+  id: string
+};
 
 export default (props: {
   columns: Array<string>,

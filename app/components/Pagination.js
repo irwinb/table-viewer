@@ -4,20 +4,22 @@ import ChevronLeft from 'material-ui-icons/ChevronLeft';
 import ChevronRight from 'material-ui-icons/ChevronRight';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import type { ChangePage } from './types';
 
 export default (props: {
-  totalNumberOfElements: number,
   start: number,
-  elementsPerPage: number,
-  changePage: ChangePage
+  countPerPage: number,
+  totalCount: number,
+  changePage: (number) => void
 }) => {
-  const { totalNumberOfElements, start, elementsPerPage, changePage } = props;
+  const { start, countPerPage, totalCount, changePage } = props;
 
-  const numberOfPages = Math.ceil(totalNumberOfElements / elementsPerPage);
-  const currentPageNum = Math.ceil(start / elementsPerPage) + 1;
-  const prevStart = start > elementsPerPage ? start - elementsPerPage : 0;
-  console.log(start);
+  const numberOfPages = Math.ceil(totalCount / countPerPage);
+  const currentPageNum = Math.ceil(start / countPerPage) + 1;
+  const prevStart = start > countPerPage ? start - countPerPage : 0;
+
+  console.log(totalCount);
+  console.log(countPerPage);
+
   const pageButtons = Array
     .from(Array(numberOfPages))
     .map((elem, index) => {
@@ -26,7 +28,7 @@ export default (props: {
         <Button
           disabled={page === currentPageNum}
           key={`page-${page}-btn`}
-          onClick={() => changePage(elementsPerPage * index)}
+          onClick={() => changePage(countPerPage * index)}
         >
           {page}
         </Button>);
@@ -42,8 +44,8 @@ export default (props: {
       </IconButton>
       { pageButtons }
       <IconButton
-        disabled={start + elementsPerPage >= totalNumberOfElements}
-        onClick={() => changePage(start + elementsPerPage)}
+        disabled={start + countPerPage >= totalCount}
+        onClick={() => changePage(start + countPerPage)}
       >
         <ChevronRight />
       </IconButton>

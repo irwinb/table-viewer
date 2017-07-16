@@ -7,9 +7,9 @@ import DotProp from 'dot-prop';
 // Defaults
 const store = {
   data: {
-    maxRowsPerRequest: 1000,
-    defaultRowsPerPage: 10
-  }
+    maxRowsPerRequest: 1000
+  },
+  defaultCountPerPage: 10
 };
 
 export type Value =

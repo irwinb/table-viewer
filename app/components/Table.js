@@ -6,7 +6,12 @@ import Table, {
   TableCell,
   TableRow
 } from 'material-ui/Table';
-import type { RowData, RowType } from './types';
+
+export type RowData = {
+  id: string
+};
+
+export type RowType = React$Element<*>;
 
 export default class extends Component {
   props: {
