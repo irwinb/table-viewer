@@ -24,8 +24,6 @@ function TableStorageClientFactory(connectionString: string) {
         .queryEntitiesAsync('members', getAllQuery, continuationToken)
         .then(result => {
           console.log(JSON.stringify(result));
-          // Read columns
-
           return result.response.body.value;
         });
     }
