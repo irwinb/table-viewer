@@ -1,12 +1,19 @@
 // @flow
 import Promise from 'bluebird';
-import TableStorageClientFactory from '../data/tableStorageClient';
+import DataClient from '../data';
+import config from '../config';
+import {
+  updatePagination
+} from './pagination';
+import {
+  updateColumns
+} from './table';
 
 type ActionType = {
   type: string
 };
-
-const tableStorageClient = TableStorageClientFactory('DefaultEndpointsProtocol=https;AccountName=gggspotify;AccountKey=sWOVzABIyZGU7hmJFa0AMTAlahB3aVvObrjZ5wKswrWwJ5IbeXKgEQv4eUy7SdAJS/fD7aa/JkHn2H20EUmdpw==;EndpointSuffix=core.windows.net');
+console.log(config.get('data.connectionString'));
+const dataClient = DataClient(config.get('data.connectionString'));
 
 export const REQUEST_DATA = 'REQUEST_DATA';
 export function requestData(): ActionType {
@@ -15,20 +22,12 @@ export function requestData(): ActionType {
   };
 }
 
-export const UPDATE_PAGE = 'UPDATE_PAGE';
-export function updatePage(start: number, count: number): ActionType {
-  return {
-    type: UPDATE_PAGE,
-    start,
-    count
-  };
-}
-
 export const RECEIVE_DATA = 'RECEIVE_DATA';
-export function receiveData(data: any): ActionType {
+export function receiveData(rows: Array<mixed>, continuationToken: ?mixed): ActionType {
   return {
     type: RECEIVE_DATA,
-    data
+    rows,
+    continuationToken
   };
 }
 
@@ -45,34 +44,38 @@ export function receiveDataFailure(error: Error): ActionType {
  */
 export function changePage(start: number): ((ActionType) => mixed, () => mixed) => Promise<*> {
   return (dispatch: (ActionType) => mixed, getState: () => mixed) => {
-    const table = getState().table;
+    const tableExplorer = getState().tableExplorer;
+    const table = tableExplorer.table;
+    const countPerPage = tableExplorer.pagination.countPerPage;
 
     if (start < 0) {
       return Promise.resolve();
     }
 
-    if (!needToFetchMoreRows(table.rows, start, table.rowsPerPage)) {
-      dispatch(updatePage(start, table.rowsPerPage));
+    if (!needToFetchMoreRows(table.rows, start, countPerPage)) {
+      dispatch(updatePagination(start));
       return Promise.resolve();
     }
-    if (!canFetchMoreRows(table.continuationToken)) {
-      dispatch(updatePage(start, table.rows.length - start));
+
+    if (start !== 0 && !canFetchMoreRows(table.continuationToken)) {
+      dispatch(updatePagination(start));
       return Promise.resolve();
     }
 
     dispatch(requestData());
 
-    return tableStorageClient
-      .getRows(table.rowsPerPage, table.continuationToken)
+    return dataClient
+      .getRows(countPerPage, table.continuationToken)
       .then(result => {
-        dispatch(receiveData(result));
-        return dispatch(updatePage(start, table.rowsPerPage));
+        dispatch(updateColumns(Object.keys(result.rows[0])));
+        dispatch(receiveData(result.rows, result.continuationToken));
+        return dispatch(updatePagination(start));
       });
   };
 }
 
-function needToFetchMoreRows(rows: Array<mixed>, start: number, count: number): boolean {
-  return !(start + count < rows.length);
+function needToFetchMoreRows(rows: ?Array<mixed>, start: number, count: number): boolean {
+  return rows == null || !(start + count < rows.length);
 }
 
 function canFetchMoreRows(continuationToken: ?string): boolean {

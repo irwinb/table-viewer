@@ -5,24 +5,22 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { changePage } from './actions/tableExplorer';
+import config from './config';
 
 const initialState = {
   tableExplorer: {
     table: {
-      columns: ['id', 'name', 'size', 'hash']
+    },
+    pagination: {
+      countPerPage: config.get('defaultCountPerPage'),
+      start: 0
     }
   }
 };
-initialState.tableExplorer.rows = Array
-  .from(Array(100))
-  .map((val, index) => ({
-    id: `${index}`,
-    name: 'Smd Mmq',
-    size: 10,
-    hash: '1JFIJJJ%%J42j34jJ$j'
-  }));
 
 const store = configureStore(initialState);
+store.dispatch(changePage(0));
 
 render(
   <AppContainer>

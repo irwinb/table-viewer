@@ -1,7 +1,7 @@
 // @flow
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changePage } from '../actions/pagination';
+import { updatePagination } from '../actions/pagination';
 import Pagination from '../components/Pagination';
 import getTotalCount from '../selectors/pagination';
 
@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ changePage }, dispatch);
+  return bindActionCreators({ changePage: updatePagination }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

@@ -4,14 +4,29 @@ import {
   TableQuery
 } from 'azure-storage';
 import Bluebird from 'bluebird';
-import Conf from '../conf';
+import config from '../../config';
+
+type ContinuationToken = {
+  nextPartitionKey: string,
+  nextRowKey: string,
+  targetLocation: number
+};
+
+type Entity = {
+  PartitionKey: string,
+  RowKey: string
+};
+
+type Row = {
+  id: string
+};
 
 function TableStorageClientFactory(connectionString: string) {
   const proto = {
-    maxRowsPerRequest: Conf.get('data.maxRowsPerRequest'),
+    maxRowsPerRequest: config.get('data.maxRowsPerRequest'),
     table: createAsyncTableService(connectionString),
 
-    getRows(count: number, continuationToken: string) {
+    getRows(count: number, continuationToken: ?ContinuationToken) {
       if (count > this.maxRowsPerRequest) {
         throw new Error(`number of rows must be (0,${this.maxRowsPerRequest}]`);
       }
@@ -21,16 +36,20 @@ function TableStorageClientFactory(connectionString: string) {
       .top(count);
 
       return this.table
-        .queryEntitiesAsync('members', getAllQuery, continuationToken)
-        .then(result => {
-          console.log(JSON.stringify(result));
-          return result.response.body.value;
-        });
+        .queryEntitiesAsync('users', getAllQuery, continuationToken)
+        .then(result => ({
+            rows: result.response.body.value.map(imputateRow),
+            continuationToken: result.result.continuationToken
+        }));
     }
   };
 
   return proto;
 }
+
+const imputateRow = (row: Entity): Row => ({...row,
+  id: `${row.PartitionKey}:${row.RowKey}`
+});
 
 function createAsyncTableService(connString) {
   return Bluebird.promisifyAll(createTableService(connString), {

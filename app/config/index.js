@@ -2,15 +2,12 @@
 /**
  * Static config for app.
  */
-import DotProp from 'dot-prop';
+import Store from 'electron-store';
+import defaults from './defaults';
 
-// Defaults
-const store = {
-  data: {
-    maxRowsPerRequest: 1000
-  },
-  defaultCountPerPage: 10
-};
+const store = new Store({
+  defaults
+});
 
 export type Value =
   | string
@@ -27,8 +24,8 @@ export default {
    * @param  {[type]} defaultValue: ?Value    optional default value to return if key not found
    * @return {[type]}               the value
    */
-  get(key: string, defaultValue: ?Value) {
-    return DotProp.get(store, key, defaultValue);
+  get(key: string) {
+    return store.get(key);
   },
 
   /**
@@ -37,12 +34,6 @@ export default {
    * @param {[type]} val: Value  the value to set
    */
   set(key: SetKey, val: Value) {
-    if (typeof key === 'object') {
-      Object
-      .keys(key)
-      .forEach(k => DotProp.set(store, k, key[k]));
-    } else {
-      DotProp.set(store, key, val);
-    }
+    store.set(key, val);
   }
 };

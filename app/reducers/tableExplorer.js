@@ -14,7 +14,7 @@ type RowsAction = {
 
 type ContinuationTokenAction = {
   type: string,
-  continuationToken: ?string
+  continuationToken: ?mixed
 };
 
 type Action =
@@ -25,13 +25,13 @@ type Action =
 function rows(state: Array = [], action: Action) {
   switch (action.type) {
     case RECEIVE_DATA:
-      return [...state, action.rows];
+      return [...state, ...action.rows];
     default:
       return state;
   }
 }
 
-function continuationToken(state: ?string = null, action: Action) {
+function continuationToken(state: ?mixed = null, action: Action) {
   switch (action.type) {
     case RECEIVE_DATA:
       return action.continuationToken;

@@ -6,9 +6,9 @@ import type {
   PaginationActionType
 } from '../actions/pagination';
 import {
-  CHANGE_PAGE,
+  UPDATE_PAGINATION
 } from '../actions/pagination';
-import Conf from '../conf';
+import config from '../config';
 
 type Action =
   | BaseAction
@@ -16,19 +16,17 @@ type Action =
 
 export type PaginationState = {
   start: number,
-  countPerPage: number,
-  totalCount: number
+  countPerPage: number
 };
 
-const defaultCountPerPage = Conf.get('defaultCountPerPage');
+const defaultCountPerPage = config.get('defaultCountPerPage');
 
 export default function pagination(state: PaginationState = {
   start: 0,
-  countPerPage: defaultCountPerPage,
-  totalCount: 0
+  countPerPage: defaultCountPerPage
 }, action: BaseAction) {
   switch (action.type) {
-    case CHANGE_PAGE: {
+    case UPDATE_PAGINATION: {
       const pageAction = (action: PaginationActionType);
       return { ...state,
         start: pageAction.start

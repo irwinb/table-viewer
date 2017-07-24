@@ -1,14 +1,14 @@
 // @flow
-type PaginationActionType = {
+export type PaginationActionType = {
   type: string,
   start: number
 };
 
-export const CHANGE_PAGE = 'CHANGE_PAGE';
-export function changePage(
+export const UPDATE_PAGINATION = 'UPDATE_PAGINATION';
+export function updatePagination(
   start: number): PaginationActionType {
   return {
-    type: CHANGE_PAGE,
+    type: UPDATE_PAGINATION,
     start
   };
 }
